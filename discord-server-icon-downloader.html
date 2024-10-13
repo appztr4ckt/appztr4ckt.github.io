@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -23,9 +23,9 @@
 </head>
 <body>
     <h1>Discord Server Icon Fetcher</h1>
-    <p>Gib einen Discord-Invite-Link ein, um das Server-Icon zu erhalten:</p>
+    <p>Enter a Discord invite link to get the server icon:</p>
     <input type="text" id="inviteLink" placeholder="discord.gg/your-invite" />
-    <button onclick="fetchServerIcon()">Icon Abrufen</button>
+    <button onclick="fetchServerIcon()">Fetch Icon</button>
 
     <div id="result" style="display:none;">
         <h3>Server Icon:</h3>
@@ -36,10 +36,10 @@
     <script>
         async function fetchServerIcon() {
             const inviteLink = document.getElementById('inviteLink').value;
-            const inviteCode = inviteLink.split('/').pop(); // get the invite code from the URL
+            const inviteCode = inviteLink.split('/').pop(); // Extract the invite code from the URL
             
             if (!inviteCode) {
-                alert("Bitte gib einen gültigen Discord Invite-Link ein.");
+                alert("Please enter a valid Discord invite link.");
                 return;
             }
 
@@ -56,14 +56,13 @@
                     document.getElementById('iconLink').textContent = iconURL;
                     document.getElementById('result').style.display = 'block';
                 } else {
-                    alert("Kein Icon gefunden oder ungültiger Invite.");
+                    alert("No icon found or invalid invite.");
                 }
             } catch (error) {
-                console.error("Fehler beim Abrufen des Server-Icons:", error);
-                alert("Fehler beim Abrufen des Server-Icons. Überprüfe den Invite-Link.");
+                console.error("Error fetching server icon:", error);
+                alert("Error fetching the server icon. Please check the invite link.");
             }
         }
     </script>
 </body>
 </html>
-
